@@ -527,6 +527,9 @@
   <!--}-->
 <!--</style>-->
 
+
+
+
 <!--/........................................魅力榜富豪榜............................................................./-->
 <template>
   <div class="content">
@@ -546,9 +549,9 @@
                   <img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">
                 </span>
             <span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">2</span>
-            <span style="position: absolute;top:30%;left: 10%;">
-                  <img :src="topThreeListRich[0].img" style="border-radius: 50%;width: 70%;">
-                </span>
+            <span style="position: absolute;top:31%;left: 8%;">
+                  <img :src="topThreeListRich[0].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">
+            </span>
           </div>
           <dl style="margin-top: 20%;text-align: center;width: 1.2rem;height: 100%;">
             <dt style="font-size: 0.12rem;width: 1.2rem;float: left;">{{topThreeListRich[0].name}}</dt>
@@ -570,9 +573,9 @@
                   <img src="../../static/img/icon_sy_ranking_one@2x.png" alt="" style="width:100%;">
                 </span>
             <span style="position: absolute;top:12%;left:48%;font-size:0.12rem;">1</span>
-            <span style="position: absolute;top:25%;left: 10%;">
-                  <img :src="topThreeListRich[1].img" style="border-radius: 50%;width: 90%;">
-                </span>
+            <span style="position: absolute;top:25%;left: 5%;">
+                  <img :src="topThreeListRich[1].img" style="width:0.85rem;height:0.85rem;border-radius: 50%;">
+            </span>
           </div>
           <dl style="margin-top: 20%;text-align: center;margin-left: -0.08rem;width: 1rem;">
             <dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeListRich[1].name}}</dt>
@@ -595,9 +598,9 @@
                   <img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">
                 </span>
             <span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">3</span>
-            <span style="position: absolute;top:30%;left: 10%;">
-                  <img :src="topThreeListRich[2].img" style="border-radius: 50%;width: 70%;">
-                </span>
+            <span style="position: absolute;top:31%;left: 7%;">
+                  <img :src="topThreeListRich[2].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">
+            </span>
           </div>
           <dl style="margin-top: 20%;text-align: center;width: 1.2rem;margin-left: -0.08rem;">
             <dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeListRich[2].name}}</dt>
@@ -621,8 +624,8 @@
                   <img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">
                 </span>
                 <span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">2</span>
-                <span style="position: absolute;top:30%;left: 10%;">
-                  <img :src="topThreeList[0].img" style="border-radius: 50%;width: 70%;">
+                <span style="position: absolute;top:31%;left: 8%;">
+                  <img :src="topThreeList[0].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">
                 </span>
             </div>
             <dl style="margin-top: 20%;text-align: center;width: 1.2rem;height: 100%;">
@@ -644,9 +647,9 @@
                 <span>
                   <img src="../../static/img/icon_sy_ranking_one@2x.png" alt="" style="width:100%;">
                 </span>
-                <span style="position: absolute;top:12%;left:48%;font-size:0.12rem;">1</span>
-                <span style="position: absolute;top:25%;left: 10%;">
-                  <img :src="topThreeList[1].img" style="border-radius: 50%;width: 90%;">
+                <span style="position: absolute;top:10%;left:48%;font-size:0.12rem;">1</span>
+                <span style="position: absolute;top:25%;left: 5%;">
+                  <img :src="topThreeList[1].img" style="width:0.85rem;height:0.85rem;border-radius: 50%;">
                 </span>
             </div>
             <dl style="margin-top: 20%;text-align: center;margin-left: -0.08rem;width: 1rem;">
@@ -670,9 +673,9 @@
                   <img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">
                 </span>
             <span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">3</span>
-            <span style="position: absolute;top:30%;left: 10%;">
-                  <img :src="topThreeList[2].img" style="border-radius: 50%;width: 70%;">
-                </span>
+            <span style="position: absolute;top:31%;left: 7%;">
+                  <img :src="topThreeList[2].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">
+            </span>
           </div>
           <dl style="margin-top: 20%;text-align: center;width: 1.2rem;margin-left: -0.08rem;">
             <dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeList[2].name}}</dt>
@@ -926,3 +929,83 @@
     background-color: #fff;
   }
 </style>
+
+
+
+<!--/........................................商城............................................................./-->
+<!--<template>-->
+  <!--<div class="content">-->
+    <!--<flexbox wrap="wrap" :gutter="0">-->
+      <!--<flexbox class="box" style="margin-top: 2%;padding: 0.1rem 0;" >-->
+        <!--<flexbox-item :span='2' >-->
+          <!--<img :src="userData[0].img" alt="" style="width: 0.6rem;height: 0.6rem;border-radius: 50%;">-->
+        <!--</flexbox-item>-->
+        <!--<flexbox-item :span="3">-->
+
+        <!--</flexbox-item>-->
+      <!--</flexbox>-->
+    <!--</flexbox>-->
+  <!--</div>-->
+<!--</template>-->
+<!--<script>-->
+  <!--import { Flexbox, FlexboxItem, Cell, Group } from 'vux'-->
+  <!--const userData = [-->
+    <!--{-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/top1.png',-->
+      <!--nickName: 'COOLBOY',-->
+      <!--isVip: 'VIP',-->
+      <!--expire: '2017-05-09日到期'-->
+    <!--}-->
+  <!--]-->
+  <!--export default{-->
+    <!--components: {-->
+      <!--Flexbox,-->
+      <!--FlexboxItem,-->
+      <!--Cell,-->
+      <!--Group-->
+    <!--},-->
+    <!--data () {-->
+      <!--return {-->
+        <!--userData: userData-->
+      <!--}-->
+    <!--},-->
+    <!--methods: {-->
+    <!--},-->
+    <!--mounted: function () {-->
+    <!--}-->
+  <!--}-->
+<!--</script>-->
+<!--<style>-->
+  <!--html,body{-->
+    <!--width:100%;-->
+    <!--height: 100%;-->
+    <!--overflow-x: hidden;-->
+  <!--}-->
+  <!--html{-->
+    <!--font-size: 31.25vw;-->
+  <!--}-->
+  <!--dl,dd,dt{-->
+    <!--margin-left: 0;-->
+    <!--padding: 0;-->
+  <!--}-->
+  <!--body{margin: 0;padding: 0;vertical-align: baseline;}-->
+  <!--.content{-->
+    <!--background: rgb(238,238,239);-->
+  <!--}-->
+  <!--.box{-->
+    <!--background: #fff;-->
+    <!--margin-left: 0;-->
+  <!--}-->
+  <!--img{-->
+    <!--width: 100%;-->
+    <!--height: auto;-->
+    <!--border-style: none;-->
+    <!--display: block;-->
+  <!--}-->
+  <!--button{-->
+    <!--outline: none;-->
+    <!--border: none;-->
+    <!--background-color: #fff;-->
+  <!--}-->
+<!--</style>-->
