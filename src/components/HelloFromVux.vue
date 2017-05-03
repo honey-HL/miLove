@@ -531,431 +531,332 @@
 
 
 <!--/........................................魅力榜富豪榜............................................................./-->
-<template>
-  <div class="content">
-    <flexbox wrap="wrap" :gutter="0">
-      <flexbox class="box" style="margin-top: 2%;padding: 0.1rem 0;" >
-        <flexbox-item :span='2' style="font-size: 0.14rem;text-align: right;">
-          实时榜
-        </flexbox-item>
-        <flexbox-item :span="3">
-          <img src="../../static/img/icon_sy_arrow-@2x.png" alt="" style="width:0.09rem;">
-        </flexbox-item>
-      </flexbox>
-      <flexbox v-if="flag == '0'" class="box" style="padding-top: 5%;margin-bottom: 2%;padding-bottom: 5%;">
-        <flexbox-item style="padding-left: 4%;">
-          <div style="position: relative" @click="intoDetail">
-                 <span>
-                  <img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">
-                </span>
-            <span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">2</span>
-            <span style="position: absolute;top:31%;left: 8%;">
-                  <img :src="topThreeListRich[0].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">
-            </span>
-          </div>
-          <dl style="margin-top: 20%;text-align: center;width: 1.2rem;height: 100%;">
-            <dt style="font-size: 0.12rem;width: 1.2rem;float: left;">{{topThreeListRich[0].name}}</dt>
-            <dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">
-              <img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">
-              {{topThreeListRich[0].age}}
-            </dd>
-            <dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin: 0 0.03rem;">
-              VIP
-            </dd>
-            <dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">
-              魅10
-            </dd>
-          </dl>
-        </flexbox-item>
-        <flexbox-item style="padding-right: 2%;margin-top: -5%;">
-          <div style="position: relative;" @click="intoDetail">
-                <span>
-                  <img src="../../static/img/icon_sy_ranking_one@2x.png" alt="" style="width:100%;">
-                </span>
-            <span style="position: absolute;top:12%;left:48%;font-size:0.12rem;">1</span>
-            <span style="position: absolute;top:25%;left: 5%;">
-                  <img :src="topThreeListRich[1].img" style="width:0.85rem;height:0.85rem;border-radius: 50%;">
-            </span>
-          </div>
-          <dl style="margin-top: 20%;text-align: center;margin-left: -0.08rem;width: 1rem;">
-            <dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeListRich[1].name}}</dt>
-            <dd style="width:0.28rem;height: 0.14rem;background: rgb(250,170,117);border-radius:5px;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: right;">
-              魅10
-            </dd>
-            <dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;margin: 0 0.03rem;float: right;">
-              VIP
-            </dd>
-            <dd style="width:0.28rem;height: 0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: right;">
-              <img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">
-              {{topThreeListRich[1].age}}
-            </dd>
-
-          </dl>
-        </flexbox-item>
-        <flexbox-item style="padding-left: 2%;">
-          <div style="position: relative" @click="intoDetail">
-                <span>
-                  <img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">
-                </span>
-            <span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">3</span>
-            <span style="position: absolute;top:31%;left: 7%;">
-                  <img :src="topThreeListRich[2].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">
-            </span>
-          </div>
-          <dl style="margin-top: 20%;text-align: center;width: 1.2rem;margin-left: -0.08rem;">
-            <dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeListRich[2].name}}</dt>
-            <dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin-right: 0;">
-              <img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">
-              {{topThreeListRich[2].age}}
-            </dd>
-            <dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;margin: 0 0.03rem;float: left;">
-              VIP
-            </dd>
-            <dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">
-              魅10
-            </dd>
-          </dl>
-        </flexbox-item>
-      </flexbox>
-      <flexbox v-else class="box" style="padding-top: 5%;margin-bottom: 2%;padding-bottom: 5%;">
-        <flexbox-item style="padding-left: 4%;">
-            <div style="position: relative" @click="intoDetail">
-                 <span>
-                  <img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">
-                </span>
-                <span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">2</span>
-                <span style="position: absolute;top:31%;left: 8%;">
-                  <img :src="topThreeList[0].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">
-                </span>
-            </div>
-            <dl style="margin-top: 20%;text-align: center;width: 1.2rem;height: 100%;">
-                <dt style="font-size: 0.12rem;width: 1.2rem;float: left;">{{topThreeList[0].name}}</dt>
-                <dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">
-                  <img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">
-                  {{topThreeList[0].age}}
-                </dd>
-                <dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin: 0 0.03rem;">
-                  VIP
-                </dd>
-                <dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">
-                 魅10
-                </dd>
-            </dl>
-        </flexbox-item>
-        <flexbox-item style="padding-right: 2%;margin-top: -5%;">
-            <div style="position: relative;" @click="intoDetail">
-                <span>
-                  <img src="../../static/img/icon_sy_ranking_one@2x.png" alt="" style="width:100%;">
-                </span>
-                <span style="position: absolute;top:10%;left:48%;font-size:0.12rem;">1</span>
-                <span style="position: absolute;top:25%;left: 5%;">
-                  <img :src="topThreeList[1].img" style="width:0.85rem;height:0.85rem;border-radius: 50%;">
-                </span>
-            </div>
-            <dl style="margin-top: 20%;text-align: center;margin-left: -0.08rem;width: 1rem;">
-                <dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeList[1].name}}</dt>
-                <dd style="width:0.28rem;height: 0.14rem;background: rgb(250,170,117);border-radius:5px;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: right;">
-                  魅10
-                </dd>
-                <dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;margin: 0 0.03rem;float: right;">
-                  VIP
-                </dd>
-                <dd style="width:0.28rem;height: 0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: right;">
-                  <img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">
-                  {{topThreeList[1].age}}
-                </dd>
-
-            </dl>
-        </flexbox-item>
-        <flexbox-item style="padding-left: 2%;">
-          <div style="position: relative" @click="intoDetail">
-                <span>
-                  <img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">
-                </span>
-            <span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">3</span>
-            <span style="position: absolute;top:31%;left: 7%;">
-                  <img :src="topThreeList[2].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">
-            </span>
-          </div>
-          <dl style="margin-top: 20%;text-align: center;width: 1.2rem;margin-left: -0.08rem;">
-            <dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeList[2].name}}</dt>
-            <dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin-right: 0;">
-              <img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">
-              {{topThreeList[2].age}}
-            </dd>
-            <dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;margin: 0 0.03rem;float: left;">
-              VIP
-            </dd>
-            <dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">
-              魅10
-            </dd>
-          </dl>
-        </flexbox-item>
-      </flexbox>
-      <flexbox v-if="flag == '0'" v-for="(item,index) in otherListRich" :key="index" wrap="wrap" :gutter="0" class="box">
-        <flexbox :gutter="0" style="height:0.8rem;">
-          <flexbox-item :span='1' style="color: rgb(140,117,250);text-align: center;font-size: 0.14rem;">
-            <!--{{num++}}-->4
-          </flexbox-item>
-          <flexbox-item :span='3'>
-            <button @click="intoDetail">
-              <img :src="item.img" alt="" style="width: 80%;border-radius: 50%;">
-            </button>
-          </flexbox-item>
-          <flexbox-item :span='8' style="border-bottom: 0.01rem solid #d6d6d6;padding-bottom: 0.15rem;">
-            <dl style="height: 0.38rem;">
-              <dt style="font-size: 0.12rem;">{{item.name}}</dt>
-              <dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin-right: 0;">
-                <img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">
-                {{item.age}}
-              </dd>
-              <dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin: 0 0.05rem;text-align: center;">
-                {{item.status}}
-              </dd>
-              <dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;text-align: center;">
-                {{item.mei}}
-              </dd>
-            </dl>
-            <div style="font-size: 0.12rem;height: 0.12rem;color: #999;">{{item.desc}}</div>
-          </flexbox-item>
-        </flexbox>
-      </flexbox>
-      <flexbox v-else v-for="(item,index) in otherList" :key="index" wrap="wrap" :gutter="0" class="box">
-        <flexbox :gutter="0" style="height:0.8rem;">
-          <flexbox-item :span='1' style="color: rgb(140,117,250);text-align: center;font-size: 0.14rem;">
-            <!--{{num++}}-->4
-          </flexbox-item>
-          <flexbox-item :span='3'>
-            <button @click="intoDetail">
-              <img :src="item.img" alt="" style="width: 80%;border-radius: 50%;">
-            </button>
-          </flexbox-item>
-          <flexbox-item :span='8' style="border-bottom: 0.01rem solid #d6d6d6;padding-bottom: 0.15rem;">
-            <dl style="height: 0.38rem;">
-              <dt style="font-size: 0.12rem;">{{item.name}}</dt>
-              <dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin-right: 0;">
-                <img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">
-                {{item.age}}
-              </dd>
-              <dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin: 0 0.05rem;text-align: center;">
-                {{item.status}}
-              </dd>
-              <dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;text-align: center;">
-                {{item.mei}}
-              </dd>
-            </dl>
-            <div style="font-size: 0.12rem;height: 0.12rem;color: #999;">{{item.desc}}</div>
-          </flexbox-item>
-        </flexbox>
-      </flexbox>
-    </flexbox>
-  </div>
-</template>
-<script>
-  import { Flexbox, FlexboxItem, Cell, Group } from 'vux'
-  const topThreeList = [
-    {
-      url: 'javascript:',
-      img: '../../static/img/top2.png',
-      name: 'Whitney',
-      age: '24'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/top1.png',
-      name: 'Katharine',
-      age: '22'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/top3.png',
-      name: 'William',
-      age: '25'
-    }
-  ]
-  const topThreeListRich = [
-    {
-      url: 'javascript:',
-      img: '../../static/img/top3.png',
-      name: 'William',
-      age: '25'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/top2.png',
-      name: 'Whitney',
-      age: '24'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/top1.png',
-      name: 'Katharine',
-      age: '22'
-    }
-  ]
-  const otherList = [
-    {
-      url: 'javascript:',
-      img: '../../static/img/botton_sy_picture_two@2x.png',
-      name: 'SUNSHINE',
-      age: '24',
-      status: 'VIP',
-      mei: '魅9',
-      desc: '红尘滚滚中，遇一人白首，择一城终老'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/botton_sy_picture-_one@3x.png',
-      name: 'IHGING',
-      age: '22',
-      status: 'VIP',
-      mei: '魅10',
-      desc: '红尘滚滚中，遇一人白首'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/botton_sy_picture_four-@2x.png',
-      name: 'ELLE',
-      age: '25',
-      status: 'VIP',
-      mei: '魅8',
-      desc: '遇见未知的自己'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/botton_sy_picture_three@2x.png',
-      name: 'BATTERFLY',
-      age: '21',
-      status: 'VIP',
-      mei: '魅10',
-      desc: '遇一人白首，择一城终老'
-    }
-  ]
-  const otherListRich = [
-    {
-      url: 'javascript:',
-      img: '../../static/img/botton_sy_picture_three@2x.png',
-      name: 'BATTERFLY',
-      age: '21',
-      status: 'VIP',
-      mei: '魅10',
-      desc: '遇一人白首，择一城终老'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/botton_sy_picture_two@2x.png',
-      name: 'SUNSHINE',
-      age: '24',
-      status: 'VIP',
-      mei: '魅9',
-      desc: '红尘滚滚中，遇一人白首，择一城终老'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/botton_sy_picture-_one@3x.png',
-      name: 'IHGING',
-      age: '22',
-      status: 'VIP',
-      mei: '魅10',
-      desc: '红尘滚滚中，遇一人白首'
-    }, {
-      url: 'javascript:',
-      img: '../../static/img/botton_sy_picture_four-@2x.png',
-      name: 'ELLE',
-      age: '25',
-      status: 'VIP',
-      mei: '魅8',
-      desc: '遇见未知的自己'
-    }
-  ]
-  export default{
-    components: {
-      Flexbox,
-      FlexboxItem,
-      Cell,
-      Group
-    },
-    data () {
-      return {
-        topThreeList: topThreeList,
-        topThreeListRich: topThreeListRich,
-        otherList: otherList,
-        otherListRich: otherListRich,
-        num: 4,
-        flag: ''
-      }
-    },
-    methods: {
-      intoDetail () {
-        console.log('点击了')
-      },
-      finiteNum (num) {
-        this.num < 8
-      },
-      getUrlKey () {
-        let hash = location.hash
-        if (hash.indexOf('?') !== -1) {
-          this.flag = hash.substr(3).split('=')[1]
-        }
-      }
-    },
-    mounted: function () {
-      this.finiteNum()
-      this.getUrlKey()
-    }
-  }
-</script>
-<style>
-  html,body{
-    width:100%;
-    height: 100%;
-    overflow-x: hidden;
-  }
-  html{
-   font-size: 31.25vw;
-  }
-  dl,dd,dt{
-    margin-left: 0;
-    padding: 0;
-  }
-  body{margin: 0;padding: 0;vertical-align: baseline;}
-  .content{
-    background: rgb(238,238,239);
-  }
-  .box{
-    background: #fff;
-    margin-left: 0;
-  }
-  img{
-    width: 100%;
-    height: auto;
-    border-style: none;
-    display: block;
-  }
-  button{
-    outline: none;
-    border: none;
-    background-color: #fff;
-  }
-</style>
-
-
-
-<!--/........................................商城............................................................./-->
 <!--<template>-->
   <!--<div class="content">-->
     <!--<flexbox wrap="wrap" :gutter="0">-->
       <!--<flexbox class="box" style="margin-top: 2%;padding: 0.1rem 0;" >-->
-        <!--<flexbox-item :span='2' >-->
-          <!--<img :src="userData[0].img" alt="" style="width: 0.6rem;height: 0.6rem;border-radius: 50%;">-->
+        <!--<flexbox-item :span='2' style="font-size: 0.14rem;text-align: right;">-->
+          <!--实时榜-->
         <!--</flexbox-item>-->
         <!--<flexbox-item :span="3">-->
-
+          <!--<img src="../../static/img/icon_sy_arrow-@2x.png" alt="" style="width:0.09rem;">-->
         <!--</flexbox-item>-->
+      <!--</flexbox>-->
+      <!--<flexbox v-if="flag == '0'" class="box" style="padding-top: 5%;margin-bottom: 2%;padding-bottom: 5%;">-->
+        <!--<flexbox-item style="padding-left: 4%;">-->
+          <!--<div style="position: relative" @click="intoDetail">-->
+                 <!--<span>-->
+                  <!--<img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">-->
+                <!--</span>-->
+            <!--<span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">2</span>-->
+            <!--<span style="position: absolute;top:31%;left: 8%;">-->
+                  <!--<img :src="topThreeListRich[0].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">-->
+            <!--</span>-->
+          <!--</div>-->
+          <!--<dl style="margin-top: 20%;text-align: center;width: 1.2rem;height: 100%;">-->
+            <!--<dt style="font-size: 0.12rem;width: 1.2rem;float: left;">{{topThreeListRich[0].name}}</dt>-->
+            <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">-->
+              <!--<img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">-->
+              <!--{{topThreeListRich[0].age}}-->
+            <!--</dd>-->
+            <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin: 0 0.03rem;">-->
+              <!--VIP-->
+            <!--</dd>-->
+            <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">-->
+              <!--魅10-->
+            <!--</dd>-->
+          <!--</dl>-->
+        <!--</flexbox-item>-->
+        <!--<flexbox-item style="padding-right: 2%;margin-top: -5%;">-->
+          <!--<div style="position: relative;" @click="intoDetail">-->
+                <!--<span>-->
+                  <!--<img src="../../static/img/icon_sy_ranking_one@2x.png" alt="" style="width:100%;">-->
+                <!--</span>-->
+            <!--<span style="position: absolute;top:12%;left:48%;font-size:0.12rem;">1</span>-->
+            <!--<span style="position: absolute;top:25%;left: 5%;">-->
+                  <!--<img :src="topThreeListRich[1].img" style="width:0.85rem;height:0.85rem;border-radius: 50%;">-->
+            <!--</span>-->
+          <!--</div>-->
+          <!--<dl style="margin-top: 20%;text-align: center;margin-left: -0.08rem;width: 1rem;">-->
+            <!--<dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeListRich[1].name}}</dt>-->
+            <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(250,170,117);border-radius:5px;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: right;">-->
+              <!--魅10-->
+            <!--</dd>-->
+            <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;margin: 0 0.03rem;float: right;">-->
+              <!--VIP-->
+            <!--</dd>-->
+            <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: right;">-->
+              <!--<img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">-->
+              <!--{{topThreeListRich[1].age}}-->
+            <!--</dd>-->
+
+          <!--</dl>-->
+        <!--</flexbox-item>-->
+        <!--<flexbox-item style="padding-left: 2%;">-->
+          <!--<div style="position: relative" @click="intoDetail">-->
+                <!--<span>-->
+                  <!--<img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">-->
+                <!--</span>-->
+            <!--<span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">3</span>-->
+            <!--<span style="position: absolute;top:31%;left: 7%;">-->
+                  <!--<img :src="topThreeListRich[2].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">-->
+            <!--</span>-->
+          <!--</div>-->
+          <!--<dl style="margin-top: 20%;text-align: center;width: 1.2rem;margin-left: -0.08rem;">-->
+            <!--<dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeListRich[2].name}}</dt>-->
+            <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin-right: 0;">-->
+              <!--<img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">-->
+              <!--{{topThreeListRich[2].age}}-->
+            <!--</dd>-->
+            <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;margin: 0 0.03rem;float: left;">-->
+              <!--VIP-->
+            <!--</dd>-->
+            <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">-->
+              <!--魅10-->
+            <!--</dd>-->
+          <!--</dl>-->
+        <!--</flexbox-item>-->
+      <!--</flexbox>-->
+      <!--<flexbox v-else class="box" style="padding-top: 5%;margin-bottom: 2%;padding-bottom: 5%;">-->
+        <!--<flexbox-item style="padding-left: 4%;">-->
+            <!--<div style="position: relative" @click="intoDetail">-->
+                 <!--<span>-->
+                  <!--<img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">-->
+                <!--</span>-->
+                <!--<span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">2</span>-->
+                <!--<span style="position: absolute;top:31%;left: 8%;">-->
+                  <!--<img :src="topThreeList[0].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<dl style="margin-top: 20%;text-align: center;width: 1.2rem;height: 100%;">-->
+                <!--<dt style="font-size: 0.12rem;width: 1.2rem;float: left;">{{topThreeList[0].name}}</dt>-->
+                <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">-->
+                  <!--<img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">-->
+                  <!--{{topThreeList[0].age}}-->
+                <!--</dd>-->
+                <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin: 0 0.03rem;">-->
+                  <!--VIP-->
+                <!--</dd>-->
+                <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">-->
+                 <!--魅10-->
+                <!--</dd>-->
+            <!--</dl>-->
+        <!--</flexbox-item>-->
+        <!--<flexbox-item style="padding-right: 2%;margin-top: -5%;">-->
+            <!--<div style="position: relative;" @click="intoDetail">-->
+                <!--<span>-->
+                  <!--<img src="../../static/img/icon_sy_ranking_one@2x.png" alt="" style="width:100%;">-->
+                <!--</span>-->
+                <!--<span style="position: absolute;top:10%;left:48%;font-size:0.12rem;">1</span>-->
+                <!--<span style="position: absolute;top:25%;left: 5%;">-->
+                  <!--<img :src="topThreeList[1].img" style="width:0.85rem;height:0.85rem;border-radius: 50%;">-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<dl style="margin-top: 20%;text-align: center;margin-left: -0.08rem;width: 1rem;">-->
+                <!--<dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeList[1].name}}</dt>-->
+                <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(250,170,117);border-radius:5px;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: right;">-->
+                  <!--魅10-->
+                <!--</dd>-->
+                <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;margin: 0 0.03rem;float: right;">-->
+                  <!--VIP-->
+                <!--</dd>-->
+                <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: right;">-->
+                  <!--<img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">-->
+                  <!--{{topThreeList[1].age}}-->
+                <!--</dd>-->
+
+            <!--</dl>-->
+        <!--</flexbox-item>-->
+        <!--<flexbox-item style="padding-left: 2%;">-->
+          <!--<div style="position: relative" @click="intoDetail">-->
+                <!--<span>-->
+                  <!--<img src="../../static/img/icon_sy_ranking_two@2x.png" alt="" style="width:85%;">-->
+                <!--</span>-->
+            <!--<span style="position: absolute;top:12%;left:39%;font-size:0.12rem;">3</span>-->
+            <!--<span style="position: absolute;top:31%;left: 7%;">-->
+                  <!--<img :src="topThreeList[2].img" style="width:0.65rem;height:0.65rem;border-radius: 50%;">-->
+            <!--</span>-->
+          <!--</div>-->
+          <!--<dl style="margin-top: 20%;text-align: center;width: 1.2rem;margin-left: -0.08rem;">-->
+            <!--<dt style="font-size: 0.12rem;float: left;width: 1.2rem;">{{topThreeList[2].name}}</dt>-->
+            <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin-right: 0;">-->
+              <!--<img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">-->
+              <!--{{topThreeList[2].age}}-->
+            <!--</dd>-->
+            <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;margin: 0 0.03rem;float: left;">-->
+              <!--VIP-->
+            <!--</dd>-->
+            <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;">-->
+              <!--魅10-->
+            <!--</dd>-->
+          <!--</dl>-->
+        <!--</flexbox-item>-->
+      <!--</flexbox>-->
+      <!--<flexbox v-if="flag == '0'" v-for="(item,index) in otherListRich" :key="index" wrap="wrap" :gutter="0" class="box">-->
+        <!--<flexbox :gutter="0" style="height:0.8rem;">-->
+          <!--<flexbox-item :span='1' style="color: rgb(140,117,250);text-align: center;font-size: 0.14rem;">-->
+            <!--&lt;!&ndash;{{num++}}&ndash;&gt;4-->
+          <!--</flexbox-item>-->
+          <!--<flexbox-item :span='3'>-->
+            <!--<button @click="intoDetail">-->
+              <!--<img :src="item.img" alt="" style="width: 80%;border-radius: 50%;">-->
+            <!--</button>-->
+          <!--</flexbox-item>-->
+          <!--<flexbox-item :span='8' style="border-bottom: 0.01rem solid #d6d6d6;padding-bottom: 0.15rem;">-->
+            <!--<dl style="height: 0.38rem;">-->
+              <!--<dt style="font-size: 0.12rem;">{{item.name}}</dt>-->
+              <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin-right: 0;">-->
+                <!--<img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">-->
+                <!--{{item.age}}-->
+              <!--</dd>-->
+              <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin: 0 0.05rem;text-align: center;">-->
+                <!--{{item.status}}-->
+              <!--</dd>-->
+              <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;text-align: center;">-->
+                <!--{{item.mei}}-->
+              <!--</dd>-->
+            <!--</dl>-->
+            <!--<div style="font-size: 0.12rem;height: 0.12rem;color: #999;">{{item.desc}}</div>-->
+          <!--</flexbox-item>-->
+        <!--</flexbox>-->
+      <!--</flexbox>-->
+      <!--<flexbox v-else v-for="(item,index) in otherList" :key="index" wrap="wrap" :gutter="0" class="box">-->
+        <!--<flexbox :gutter="0" style="height:0.8rem;">-->
+          <!--<flexbox-item :span='1' style="color: rgb(140,117,250);text-align: center;font-size: 0.14rem;">-->
+            <!--&lt;!&ndash;{{num++}}&ndash;&gt;4-->
+          <!--</flexbox-item>-->
+          <!--<flexbox-item :span='3'>-->
+            <!--<button @click="intoDetail">-->
+              <!--<img :src="item.img" alt="" style="width: 80%;border-radius: 50%;">-->
+            <!--</button>-->
+          <!--</flexbox-item>-->
+          <!--<flexbox-item :span='8' style="border-bottom: 0.01rem solid #d6d6d6;padding-bottom: 0.15rem;">-->
+            <!--<dl style="height: 0.38rem;">-->
+              <!--<dt style="font-size: 0.12rem;">{{item.name}}</dt>-->
+              <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(240,117,130);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin-right: 0;">-->
+                <!--<img src="../../static/img/icon_grxq_boy@2x.png" alt="" style="width:30%;margin-top: 5%;margin-left:5%;display: inline;">-->
+                <!--{{item.age}}-->
+              <!--</dd>-->
+              <!--<dd style="width:0.28rem;height: 0.14rem;background: rgb(140,117,250);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;margin: 0 0.05rem;text-align: center;">-->
+                <!--{{item.status}}-->
+              <!--</dd>-->
+              <!--<dd style="width:0.28rem;height:0.14rem;background: rgb(250,170,117);border-radius:0.05rem;display: inline-block;color: #fff;font-size: 0.12rem;line-height: 0.15rem;float: left;text-align: center;">-->
+                <!--{{item.mei}}-->
+              <!--</dd>-->
+            <!--</dl>-->
+            <!--<div style="font-size: 0.12rem;height: 0.12rem;color: #999;">{{item.desc}}</div>-->
+          <!--</flexbox-item>-->
+        <!--</flexbox>-->
       <!--</flexbox>-->
     <!--</flexbox>-->
   <!--</div>-->
 <!--</template>-->
 <!--<script>-->
   <!--import { Flexbox, FlexboxItem, Cell, Group } from 'vux'-->
-  <!--const userData = [-->
+  <!--const topThreeList = [-->
     <!--{-->
       <!--url: 'javascript:',-->
+      <!--img: '../../static/img/top2.png',-->
+      <!--name: 'Whitney',-->
+      <!--age: '24'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
       <!--img: '../../static/img/top1.png',-->
-      <!--nickName: 'COOLBOY',-->
-      <!--isVip: 'VIP',-->
-      <!--expire: '2017-05-09日到期'-->
+      <!--name: 'Katharine',-->
+      <!--age: '22'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/top3.png',-->
+      <!--name: 'William',-->
+      <!--age: '25'-->
+    <!--}-->
+  <!--]-->
+  <!--const topThreeListRich = [-->
+    <!--{-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/top3.png',-->
+      <!--name: 'William',-->
+      <!--age: '25'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/top2.png',-->
+      <!--name: 'Whitney',-->
+      <!--age: '24'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/top1.png',-->
+      <!--name: 'Katharine',-->
+      <!--age: '22'-->
+    <!--}-->
+  <!--]-->
+  <!--const otherList = [-->
+    <!--{-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/botton_sy_picture_two@2x.png',-->
+      <!--name: 'SUNSHINE',-->
+      <!--age: '24',-->
+      <!--status: 'VIP',-->
+      <!--mei: '魅9',-->
+      <!--desc: '红尘滚滚中，遇一人白首，择一城终老'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/botton_sy_picture-_one@3x.png',-->
+      <!--name: 'IHGING',-->
+      <!--age: '22',-->
+      <!--status: 'VIP',-->
+      <!--mei: '魅10',-->
+      <!--desc: '红尘滚滚中，遇一人白首'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/botton_sy_picture_four-@2x.png',-->
+      <!--name: 'ELLE',-->
+      <!--age: '25',-->
+      <!--status: 'VIP',-->
+      <!--mei: '魅8',-->
+      <!--desc: '遇见未知的自己'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/botton_sy_picture_three@2x.png',-->
+      <!--name: 'BATTERFLY',-->
+      <!--age: '21',-->
+      <!--status: 'VIP',-->
+      <!--mei: '魅10',-->
+      <!--desc: '遇一人白首，择一城终老'-->
+    <!--}-->
+  <!--]-->
+  <!--const otherListRich = [-->
+    <!--{-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/botton_sy_picture_three@2x.png',-->
+      <!--name: 'BATTERFLY',-->
+      <!--age: '21',-->
+      <!--status: 'VIP',-->
+      <!--mei: '魅10',-->
+      <!--desc: '遇一人白首，择一城终老'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/botton_sy_picture_two@2x.png',-->
+      <!--name: 'SUNSHINE',-->
+      <!--age: '24',-->
+      <!--status: 'VIP',-->
+      <!--mei: '魅9',-->
+      <!--desc: '红尘滚滚中，遇一人白首，择一城终老'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/botton_sy_picture-_one@3x.png',-->
+      <!--name: 'IHGING',-->
+      <!--age: '22',-->
+      <!--status: 'VIP',-->
+      <!--mei: '魅10',-->
+      <!--desc: '红尘滚滚中，遇一人白首'-->
+    <!--}, {-->
+      <!--url: 'javascript:',-->
+      <!--img: '../../static/img/botton_sy_picture_four-@2x.png',-->
+      <!--name: 'ELLE',-->
+      <!--age: '25',-->
+      <!--status: 'VIP',-->
+      <!--mei: '魅8',-->
+      <!--desc: '遇见未知的自己'-->
     <!--}-->
   <!--]-->
   <!--export default{-->
@@ -967,12 +868,31 @@
     <!--},-->
     <!--data () {-->
       <!--return {-->
-        <!--userData: userData-->
+        <!--topThreeList: topThreeList,-->
+        <!--topThreeListRich: topThreeListRich,-->
+        <!--otherList: otherList,-->
+        <!--otherListRich: otherListRich,-->
+        <!--num: 4,-->
+        <!--flag: ''-->
       <!--}-->
     <!--},-->
     <!--methods: {-->
+      <!--intoDetail () {-->
+        <!--console.log('点击了')-->
+      <!--},-->
+      <!--finiteNum (num) {-->
+        <!--this.num < 8-->
+      <!--},-->
+      <!--getUrlKey () {-->
+        <!--let hash = location.hash-->
+        <!--if (hash.indexOf('?') !== -1) {-->
+          <!--this.flag = hash.substr(3).split('=')[1]-->
+        <!--}-->
+      <!--}-->
     <!--},-->
     <!--mounted: function () {-->
+      <!--this.finiteNum()-->
+      <!--this.getUrlKey()-->
     <!--}-->
   <!--}-->
 <!--</script>-->
@@ -983,7 +903,7 @@
     <!--overflow-x: hidden;-->
   <!--}-->
   <!--html{-->
-    <!--font-size: 31.25vw;-->
+   <!--font-size: 31.25vw;-->
   <!--}-->
   <!--dl,dd,dt{-->
     <!--margin-left: 0;-->
@@ -1009,3 +929,98 @@
     <!--background-color: #fff;-->
   <!--}-->
 <!--</style>-->
+
+
+
+<!--/........................................商城............................................................./-->
+<template>
+  <div class="content">
+    <flexbox wrap="wrap" :gutter="0">
+      <flexbox class="box" style="margin-top: 2%;padding: 0.1rem 0;" >
+        <flexbox-item :span='2' style="padding-left: 0.15rem;">
+          <img :src="userData[0].img" alt="" style="width: 0.6rem;height: 0.6rem;border-radius: 50%;">
+        </flexbox-item>
+        <flexbox-item :span='4' style="font-size: 0.14rem;color: #3e3e3e;margin-left: 0.20rem;">
+          <dl>
+            <dt>{{userData[0].nickName}}</dt>
+            <dd style="font-size: 0.1rem;color: #fff;width: 0.28rem;height: 0.12rem;line-height:0.12rem;background-color: rgb(140,117,250);text-align: center;border-radius: 0.05rem;">
+              {{userData[0].isVip}}
+            </dd>
+            <dd style="font-size: 0.12rem;color: #999;">
+              {{userData[0].expire}}
+            </dd>
+          </dl>
+        </flexbox-item>
+        <flexbox-item style="float: left;margin-left: 0.6rem;">
+          <button style="width:0.52rem;height: 0.24rem;background-color: rgb(255,162,0);float: left;border-radius: 0.12rem;color: #fff;">续费</button>
+        </flexbox-item>
+      </flexbox>
+      <div style="font-size: 0.1rem;color: rgb(99,99,99);padding: 0.05rem 0 0.05rem 0.1rem;">会员权益</div>
+      <flexbox style="margin: 0 0.05rem 0.05rem 0.05rem;background-color: #fff;font-size: 0.12rem;">
+        1244444
+      </flexbox>
+    </flexbox>
+  </div>
+</template>
+<script>
+  import { Flexbox, FlexboxItem, Cell, Group } from 'vux'
+  const userData = [
+    {
+      url: 'javascript:',
+      img: '../../static/img/boy.png',
+      nickName: 'COOLBOY',
+      isVip: 'VIP',
+      expire: '2017-05-09日到期'
+    }
+  ]
+  export default{
+    components: {
+      Flexbox,
+      FlexboxItem,
+      Cell,
+      Group
+    },
+    data () {
+      return {
+        userData: userData
+      }
+    },
+    methods: {
+    },
+    mounted: function () {
+    }
+  }
+</script>
+<style>
+  html,body{
+    width:100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  html{
+    font-size: 31.25vw;
+  }
+  dl,dd,dt{
+    margin-left: 0;
+    padding: 0;
+  }
+  body{margin: 0;padding: 0;vertical-align: baseline;}
+  .content{
+    background: rgb(238,238,239);
+  }
+  .box{
+    background: #fff;
+    margin-left: 0;
+  }
+  img{
+    width: 100%;
+    height: auto;
+    border-style: none;
+    display: block;
+  }
+  button{
+    outline: none;
+    border: none;
+    background-color: #fff;
+  }
+</style>
