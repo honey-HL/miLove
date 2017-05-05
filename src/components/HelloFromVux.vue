@@ -1268,14 +1268,46 @@
     <flexbox class="table">
       <flexbox-item>
         <flexbox>
-          <div style="font-size:0.14rem;wodth:100%;">富豪等级要求</div>
+          <div style="font-size:0.14rem;wodth:100%;margin-bottom: 0.05rem;">富豪等级要求</div>
         </flexbox>
         <flexbox>
           <div>
-            <table style="font-size: 0.12rem;display: block;">
-              <tr>
+            <table class="table1" style="" border="1" bordercolor="#E6E6E6" cellspacing="0" cellpadding="5">
+              <tr color="#999999">
                 <td>等级</td>
                 <td>充值钻石+消耗钻石</td>
+              </tr>
+              <tr v-for="(item,index) in list1">
+                <td>{{index + 1}}</td>
+                <td>{{item.num}}</td>
+              </tr>
+            </table>
+          </div>
+        </flexbox>
+        <flexbox>
+          <flexbox-item>
+            <flexbox style="font-size:0.14rem;wodth:100%;margin: 0.18rem 0 0.01rem 0">富豪值规则</flexbox>
+            <flexbox style="font-size: 0.1rem;color: #999;">充值多少钻石，增加相应富豪值</flexbox>
+            <flexbox style="font-size: 0.1rem;color: #999;margin-bottom: 0.05rem;">消耗多少钻石，增加相应富豪值</flexbox>
+          </flexbox-item>
+        </flexbox>
+        <flexbox>
+          <div>
+            <table class="table2" border="1" bordercolor="#E6E6E6" cellspacing="0" cellpadding="5">
+              <tr color="#999999">
+                <td>行为</td>
+                <td>富豪值</td>
+              </tr>
+              <tr v-for="(item,index) in list2">
+                <td>{{item.action}}</td>
+                <td>{{item.regalValue}}</td>
+              </tr>
+              <tr>
+                <td rowspan="2">会员充值</td>
+                <td>男：18/1个月，49/3个月，186/年</td>
+              </tr>
+              <tr>
+                <td>男：10/1个月，28/3个月，106/年</td>
               </tr>
             </table>
           </div>
@@ -1295,6 +1327,45 @@
       expire: '2017-05-09日到期'
     }
   ]
+  const list1 = [
+    {
+      num: 432
+    }, {
+      num: 2400
+    }, {
+      num: 4800
+    }, {
+      num: 12000
+    }, {
+      num: 24000
+    }, {
+      num: 48000
+    }, {
+      num: 120000
+    }, {
+      num: 240000
+    }, {
+      num: 480000
+    }
+  ]
+  const list2 = [
+    {
+      action: '语音通话',
+      regalValue: '5/分钟'
+    }, {
+      action: '视频通话',
+      regalValue: '10/分钟'
+    }, {
+      action: '查看付费照片',
+      regalValue: '5/张'
+    }, {
+      action: '送礼物',
+      regalValue: '对应价值'
+    }, {
+      action: '语音通话',
+      regalValue: '5/分钟'
+    }
+  ]
   export default{
     components: {
       Flexbox,
@@ -1306,7 +1377,9 @@
       return {
         userData: userData,
         flag: '',
-        data1: 10
+        data1: 10,
+        list1: list1,
+        list2: list2
       }
     },
     methods: {
@@ -1338,6 +1411,9 @@
     padding: 0.15rem;
     border-bottom: 1px solid #ccc;
   }
+  .table2 tr td{
+    width: 0.6rem;
+  }
   .rich{
 
   }
@@ -1364,6 +1440,19 @@
   .table{
     background-color: #fff;
     padding:0.15rem;
+  }
+  table{
+    font-size: 0.12rem;
+    text-align: center;
+    border-collapse:collapse;
+    width:2.9rem;
+  }
+  table td{
+    width: 1.4rem;
+    height: 0.35rem;
+  }
+  table tr:first-child{
+    color: #999;
   }
   img{
     width: 100%;
